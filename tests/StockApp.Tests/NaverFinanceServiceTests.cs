@@ -108,4 +108,26 @@ public class NaverFinanceServiceTests
         Assert.Equal(0m, quote.ChangeValue);
         Assert.Equal(0m, quote.ChangeRate);
     }
+
+    [Fact]
+    public void ParseMarketIndicatorResponse_GoldGD_ReadsCloseValueAndCompareToPreviousPrice()
+    {
+        const string json = """
+        {
+            "closeValue": "95500.00",
+            "compareToPreviousPrice": "500.00",
+            "compareToPreviousPriceCode": "5",
+            "fluctuationsRatio": "0.52",
+            "unit": "원"
+        }
+        """;
+
+        var quote = CreateService().ParseMarketIndicatorResponse(json, "CMDT_GD");
+
+        Assert.Equal("CMDT_GD", quote.Symbol);
+        Assert.Equal(95500.00m, quote.CurrentValue);
+        Assert.Equal(500.00m, quote.ChangeValue);
+        Assert.Equal(0.52m, quote.ChangeRate);
+        Assert.Equal("원", quote.Unit);
+    }
 }

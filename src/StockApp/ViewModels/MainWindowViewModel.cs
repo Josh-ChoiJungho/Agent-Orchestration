@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,10 +18,11 @@ public class MainWindowViewModel : BindableBase, IDisposable
     private const string SamsungSymbol = "005930";
     private const string HynixSymbol = "000660";
     private const string UsdKrwSymbol = "FX_USDKRW";
-    private const string GoldSymbol = "CMDT_GC";
+    private const string GoldSymbol = "CMDT_GD";
 
     private readonly IFinanceService _financeService;
     private readonly DispatcherTimer? _timer;
+    private readonly CancellationTokenSource _cts = new();
     private readonly object _refreshLock = new();
     private bool _isRefreshing;
     private bool _disposed;
@@ -46,10 +48,10 @@ public class MainWindowViewModel : BindableBase, IDisposable
         MarketIndicators = new ObservableCollection<FinanceItem>
         {
             new() { DisplayName = "환율 (USD/KRW)", Symbol = UsdKrwSymbol, Unit = "원" },
-            new() { DisplayName = "금시세", Symbol = GoldSymbol, Unit = "USD/oz" }
+            new() { DisplayName = "금시세", Symbol = GoldSymbol, Unit = "원" }
         };
 
-        RefreshCommand = new DelegateCommand(async () => await RefreshAsync().ConfigureAwait(false))
+        RefreshCommand = new DelegateCommand(async () => await RefreshAsync(_cts.Token))
             .ObservesCanExecute(() => CanRefresh);
 
         if (useDispatcherTimer && System.Windows.Application.Current is not null)
@@ -60,7 +62,7 @@ public class MainWindowViewModel : BindableBase, IDisposable
             };
             _timer.Tick += OnTimerTick;
             _timer.Start();
-            _ = RefreshAsync();
+            _ = RefreshAsync(_cts.Token);
         }
     }
 
@@ -118,7 +120,7 @@ public class MainWindowViewModel : BindableBase, IDisposable
             var fxTask = SafeFetchAsync(MarketIndicators[0], () => _financeService.GetExchangeRateAsync(UsdKrwSymbol, cancellationToken));
             var goldTask = SafeFetchAsync(MarketIndicators[1], () => _financeService.GetGoldPriceAsync(cancellationToken));
 
-            await Task.WhenAll(kospiTask, samsungTask, hynixTask, fxTask, goldTask).ConfigureAwait(false);
+            await Task.WhenAll(kospiTask, samsungTask, hynixTask, fxTask, goldTask);
 
             LastSyncedAt = DateTime.Now;
             StatusMessage = "최근 갱신 완료";
@@ -138,7 +140,7 @@ public class MainWindowViewModel : BindableBase, IDisposable
     {
         try
         {
-            var quote = await fetch().ConfigureAwait(false);
+            var quote = await fetch();
             ApplyQuote(item, quote);
         }
         catch (OperationCanceledException)
@@ -204,11 +206,16 @@ public class MainWindowViewModel : BindableBase, IDisposable
     {
         try
         {
-            await RefreshAsync().ConfigureAwait(false);
+            await RefreshAsync(_cts.Token);
         }
-        catch
+        catch (OperationCanceledException)
         {
-            // 타이머 콜백은 앱을 종료시키지 않는다. 개별 항목의 오류는 SafeFetchAsync에서 흡수된다.
+            // 취소는 예상 가능한 동작이므로 로깅 생략
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error during timer-based refresh: {ex}");
+            StatusMessage = $"새로고침 오류: {ex.Message}";
         }
     }
 
@@ -224,6 +231,14 @@ public class MainWindowViewModel : BindableBase, IDisposable
             _timer.Stop();
             _timer.Tick -= OnTimerTick;
         }
+        try
+        {
+            _cts.Cancel();
+        }
+        catch (ObjectDisposedException)
+        {
+        }
+        _cts.Dispose();
         GC.SuppressFinalize(this);
     }
 }

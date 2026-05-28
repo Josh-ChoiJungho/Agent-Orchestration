@@ -23,7 +23,7 @@ public class MainWindowViewModelTests
         mock.Setup(s => s.GetExchangeRateAsync("FX_USDKRW", It.IsAny<CancellationToken>()))
             .ReturnsAsync(new FinanceQuote("FX_USDKRW", 1370.50m, 3.20m, 0.23m, "원"));
         mock.Setup(s => s.GetGoldPriceAsync(It.IsAny<CancellationToken>()))
-            .ReturnsAsync(new FinanceQuote("CMDT_GC", 2350.40m, -12.10m, -0.52m, "USD/oz"));
+            .ReturnsAsync(new FinanceQuote("CMDT_GD", 95500.40m, 500.10m, 0.52m, "원"));
         return mock;
     }
 
@@ -38,7 +38,7 @@ public class MainWindowViewModelTests
         Assert.Contains(vm.Stocks, s => s.Symbol == "005930");
         Assert.Contains(vm.Stocks, s => s.Symbol == "000660");
         Assert.Contains(vm.MarketIndicators, s => s.Symbol == "FX_USDKRW");
-        Assert.Contains(vm.MarketIndicators, s => s.Symbol == "CMDT_GC");
+        Assert.Contains(vm.MarketIndicators, s => s.Symbol == "CMDT_GD");
     }
 
     [Fact]
@@ -63,7 +63,7 @@ public class MainWindowViewModelTests
         var vm = new MainWindowViewModel(mock.Object, useDispatcherTimer: false);
         await vm.RefreshAsync();
 
-        var gold = vm.MarketIndicators.First(i => i.Symbol == "CMDT_GC");
+        var gold = vm.MarketIndicators.First(i => i.Symbol == "CMDT_GD");
         Assert.Equal(FinanceStatus.Error, gold.Status);
         Assert.Equal("network down", gold.ErrorMessage);
 
@@ -101,5 +101,15 @@ public class MainWindowViewModelTests
         // 5 quotes, called once for each non-overlapping refresh
         mock.Verify(s => s.GetIndexAsync("KOSPI", It.IsAny<CancellationToken>()), Times.AtLeastOnce);
         mock.Verify(s => s.GetStockAsync("005930", It.IsAny<CancellationToken>()), Times.AtLeastOnce);
+    }
+
+    [Fact]
+    public void Dispose_StopsTimerAndCancelsCancellationTokenSource()
+    {
+        var mock = CreateSuccessServiceMock();
+        var vm = new MainWindowViewModel(mock.Object, useDispatcherTimer: false);
+
+        vm.Dispose();
+        vm.Dispose(); // Multi-dispose safety
     }
 }

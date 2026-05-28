@@ -44,13 +44,13 @@ public class NaverFinanceService : IFinanceService
 
     public async Task<FinanceQuote> GetGoldPriceAsync(CancellationToken cancellationToken = default)
     {
-        const string goldCode = "CMDT_GC";
+        const string goldCode = "CMDT_GD";
         var url = string.Format(CultureInfo.InvariantCulture, MarketIndicatorTemplate, goldCode);
         var json = await GetStringAsync(url, cancellationToken).ConfigureAwait(false);
         return ParseMarketIndicatorResponse(json, goldCode);
     }
 
-    public FinanceQuote ParseStockResponse(string json)
+    internal FinanceQuote ParseStockResponse(string json)
     {
         using var doc = JsonDocument.Parse(json);
         var root = doc.RootElement;
@@ -66,7 +66,7 @@ public class NaverFinanceService : IFinanceService
         return new FinanceQuote(symbol, price, change, rate, "KRW");
     }
 
-    public FinanceQuote ParseIndexResponse(string json)
+    internal FinanceQuote ParseIndexResponse(string json)
     {
         using var doc = JsonDocument.Parse(json);
         var root = doc.RootElement;
@@ -82,7 +82,7 @@ public class NaverFinanceService : IFinanceService
         return new FinanceQuote(symbol, value, change, rate, "P");
     }
 
-    public FinanceQuote ParseMarketIndicatorResponse(string json, string symbol)
+    internal FinanceQuote ParseMarketIndicatorResponse(string json, string symbol)
     {
         using var doc = JsonDocument.Parse(json);
         var root = doc.RootElement;
