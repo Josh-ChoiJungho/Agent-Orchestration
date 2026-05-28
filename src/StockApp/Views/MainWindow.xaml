@@ -1,0 +1,180 @@
+<Window x:Class="StockApp.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="실시간 시세 보드"
+        Height="640" Width="980"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource BackgroundBrush}"
+        FontFamily="Segoe UI"
+        Foreground="{DynamicResource ForegroundBrush}">
+    <Window.Resources>
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="{DynamicResource SurfaceBrush}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="18" />
+            <Setter Property="Margin" Value="8" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SurfaceAltBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style x:Key="LabelText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource MutedForegroundBrush}" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ValueText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{DynamicResource ForegroundBrush}" />
+            <Setter Property="FontSize" Value="28" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+        <Style x:Key="ChangeText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{DynamicResource MutedForegroundBrush}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsUp}" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource UpBrush}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsDown}" Value="True">
+                    <Setter Property="Foreground" Value="{DynamicResource DownBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="StatusPill" TargetType="Border">
+            <Setter Property="CornerRadius" Value="999" />
+            <Setter Property="Padding" Value="8,2" />
+            <Setter Property="Background" Value="{DynamicResource SurfaceAltBrush}" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource AccentBrush}" />
+            <Setter Property="Foreground" Value="#FF0F1419" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.5" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="FinanceCardTemplate">
+            <Border Style="{StaticResource CardStyle}" Width="280" Height="180">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource HeaderText}" />
+                        <TextBlock Text="{Binding Symbol}" Margin="8,4,0,0"
+                                   Style="{StaticResource LabelText}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding ValueText}" Style="{StaticResource ValueText}" />
+                        <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                            <TextBlock Text="{Binding ChangeText}" Style="{StaticResource ChangeText}" />
+                            <TextBlock Text="  " />
+                            <TextBlock Text="{Binding ChangeRateText}" Style="{StaticResource ChangeText}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border Style="{StaticResource StatusPill}" Grid.Column="0">
+                            <TextBlock Text="{Binding StatusText}" FontSize="11" Foreground="{DynamicResource MutedForegroundBrush}" />
+                        </Border>
+                        <TextBlock Grid.Column="1" Text="{Binding UpdatedAtText}"
+                                   Style="{StaticResource LabelText}" VerticalAlignment="Center" />
+                    </Grid>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="실시간 시세 보드" FontSize="22" FontWeight="Bold"
+                           Foreground="{DynamicResource ForegroundBrush}" />
+                <TextBlock Text="{Binding StatusMessage}" Margin="0,4,0,0"
+                           Style="{StaticResource LabelText}" />
+            </StackPanel>
+            <Button Grid.Column="1" Content="새로고침"
+                    Command="{Binding RefreshCommand}"
+                    VerticalAlignment="Center" />
+        </Grid>
+
+        <TextBlock Grid.Row="1" Text="주가 / 지수" Margin="8,8,0,4"
+                   Style="{StaticResource LabelText}" />
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding Stocks}"
+                      ItemTemplate="{StaticResource FinanceCardTemplate}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+
+        <StackPanel Grid.Row="3" Margin="0,16,0,0">
+            <TextBlock Text="시장 지표 (환율 / 금시세)" Margin="8,8,0,4"
+                       Style="{StaticResource LabelText}" />
+            <ItemsControl ItemsSource="{Binding MarketIndicators}"
+                          ItemTemplate="{StaticResource FinanceCardTemplate}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="8,16,0,0">
+            <TextBlock Text="마지막 동기화 " Style="{StaticResource LabelText}" />
+            <TextBlock Text="{Binding LastSyncedText}" Style="{StaticResource LabelText}" />
+        </StackPanel>
+    </Grid>
+</Window>

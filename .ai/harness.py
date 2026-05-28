@@ -459,6 +459,8 @@ def file_hash(path: Path) -> str:
 
 def is_harness_internal_path(path: str, feature: str) -> bool:
     path = norm_repo_path(path)
+    if path.startswith(".ai/") and not path.startswith(".ai/features/"):
+        return True
     if not path.startswith(".ai/runs/"):
         return False
     return path != f".ai/runs/{feature}/document_build.py"
@@ -869,6 +871,7 @@ def run_text_provider_prompt(
             stderr=subprocess.PIPE,
             timeout=timeout_seconds,
             check=False,
+            shell=(sys.platform == "win32"),
         )
         elapsed = round(time.time() - started, 2)
         stdout_text = proc.stdout or ""
@@ -2785,6 +2788,8 @@ def is_test_path(path: str) -> bool:
 
 def is_production_code_path(path: str) -> bool:
     path = norm_repo_path(path)
+    if path.endswith(".sln") and "/" not in path:
+        return True
     return path.startswith("src/") and not is_test_path(path)
 
 
@@ -3203,6 +3208,7 @@ def execute_current_prompt(state: dict[str, Any], timeout_seconds: int) -> dict[
             text=True,
             encoding="utf-8",
             errors="replace",
+            shell=(sys.platform == "win32"),
         )
         if proc.stdin and not prompt_in_command:
             proc.stdin.write(prompt_text)
@@ -3540,6 +3546,7 @@ def run_harness_verification(state: dict[str, Any]) -> dict[str, Any]:
                 stderr=subprocess.PIPE,
                 timeout=timeout_seconds,
                 check=False,
+                shell=(sys.platform == "win32"),
             )
             elapsed = round(time.time() - started, 2)
             stdout_path.write_text(proc.stdout or "", encoding="utf-8")
@@ -4697,6 +4704,7 @@ def doctor_provider_smoke(provider: str, timeout_seconds: int) -> None:
             stderr=subprocess.PIPE,
             timeout=timeout_seconds,
             check=False,
+            shell=(sys.platform == "win32"),
         )
     except subprocess.TimeoutExpired as exc:
         stdout = exc.stdout or ""
@@ -4813,6 +4821,11 @@ def build_parser() -> argparse.ArgumentParser:
     resume.add_argument("feature", help="Feature slug.")
     resume.add_argument("--auto", action="store_true", help="Continue executing stages with local providers.")
     resume.add_argument("--yes", action="store_true", help="Auto-approve human gates while running with --auto.")
+    resume.add_argument(
+        "--defaults",
+        action="store_true",
+        help="Switch this run to defaults mode before resuming.",
+    )
     resume.add_argument("--timeout", type=int, default=3600, help="Provider timeout in seconds.")
     resume.add_argument("--max-steps", type=int, default=30, help="Maximum automatic stage transitions.")
     add_performance_arg(resume)
@@ -4946,6 +4959,10 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "resume":
             state = apply_runtime_performance(load_state(args.feature), args.performance)
+            if args.defaults:
+                state["defaults_mode"] = True
+                log_event(state, "defaults_mode_enabled", "defaults mode enabled before resuming")
+                save_state(state)
             if args.auto:
                 state = auto_drive(
                     state,

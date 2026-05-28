@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "next_stage": "03_review",
+  "human_gate_required": false,
+  "blocking_reason": "",
+  "risk_level": "medium",
+  "harness_commit_required": true,
+  "commit_created_by_model": false,
+  "commit_message_suggestion": "stock-start[20260528-112700][02_develop]",
+  "model_mismatch": false,
+  "actual_model": "Claude (claude-opus-4-7)",
+  "produced_files": [
+    ".ai/features/stock-start/02_dev.md",
+    ".ai/features/stock-start/02_dev.result.json"
+  ],
+  "changed_files": [
+    "StockApp.sln",
+    "src/StockApp/StockApp.csproj",
+    "src/StockApp/App.xaml",
+    "src/StockApp/App.xaml.cs",
+    "src/StockApp/Models/FinanceItem.cs",
+    "src/StockApp/Services/IFinanceService.cs",
+    "src/StockApp/Services/NaverFinanceService.cs",
+    "src/StockApp/ViewModels/MainWindowViewModel.cs",
+    "src/StockApp/Views/MainWindow.xaml",
+    "src/StockApp/Views/MainWindow.xaml.cs",
+    "tests/StockApp.Tests/StockApp.Tests.csproj",
+    "tests/StockApp.Tests/NaverFinanceServiceTests.cs",
+    "tests/StockApp.Tests/MainWindowViewModelTests.cs",
+    ".ai/features/stock-start/02_dev.md",
+    ".ai/features/stock-start/02_dev.result.json"
+  ],
+  "test_commands": [
+    "dotnet build StockApp.sln",
+    "dotnet test StockApp.sln --no-build -nologo"
+  ],
+  "verification_summary": {
+    "build": "성공 (경고 0, 오류 0)",
+    "tests": "통과 10 / 실패 0 / 건너뜀 0 (xUnit, net9.0)"
+  },
+  "history_notes": {
+    "implemented": [
+      "Prism.DryIoc 기반 WPF MVVM 부트스트랩(App.xaml/App.xaml.cs)",
+      "IFinanceService 추상화와 NaverFinanceService 실 구현 (stock/index/marketindicator JSON 파싱)",
+      "FinanceItem BindableBase 모델 (Up/Down/Status 표시 속성 포함)",
+      "MainWindowViewModel: DispatcherTimer 5초 주기 갱신, RefreshCommand, Task.WhenAll 동시 조회, 항목별 try/catch 격리",
+      "MainWindow.xaml 다크 테마 카드 레이아웃 (상단 주가/지수 3개, 하단 환율/금시세 2개)",
+      "xUnit + Moq 단위 테스트 10건 (파서 5건, 뷰모델 5건) — 전부 통과",
+      "HttpClient 싱글톤 + User-Agent/Referer 헤더로 403 차단/소켓 누수 위험 완화",
+      "테스트용 internal 생성자 노출을 위한 InternalsVisibleTo=StockApp.Tests"
+    ],
+    "risks": [
+      "네이버 비공식 모바일 API 스키마 변경 시 파서 실패 가능 (응답 변경 모니터링 부재)",
+      "갱신 간격/종목/통화 하드코딩 — 외부 설정화 필요",
+      "백오프/재시도 정책이 단순(5초 주기 자연 재시도)에 한정",
+      "실제 네트워크/UI/타이머는 단위 테스트 범위 밖이며 수동 E2E 필요"
+    ],
+    "future_improvements": [
+      "appsettings.json 또는 옵션 패턴으로 종목/통화/갱신 간격 외부화",
+      "지수형 백오프 및 재시도 한도 적용",
+      "네이버 응답 스키마 변경 감지 및 fallback 공급자(예: 야후/공공데이터) 모듈식 등록",
+      "WinAppDriver 등으로 WPF UI 통합 테스트 도입",
+      "국내 금시세(KRW/g) 엔드포인트로 교체 또는 환율 환산 옵션 노출"
+    ],
+    "decisions": [
+      "MainWindowViewModel에 테스트용 internal 생성자(useDispatcherTimer:false)를 추가하고 InternalsVisibleTo=StockApp.Tests로 노출 — 공개 표면 확장 없이 결정적 테스트 확보",
+      "금시세 기본 코드는 네이버 모바일에서 안정적인 CMDT_GC(국제 금)를 사용 — 응답의 currencyName/unit을 그대로 UI에 노출해 향후 국내 금 코드 교체에 유연",
+      "MarkLoading은 기존 Success 항목 상태를 유지(깜박임 방지)",
+      "변동 부호는 compareToPreviousPriceCode를 보조로 적용해 양수 절대값으로 오는 응답에서도 방향성 정확성 확보",
+      "솔루션 루트 파일 StockApp.sln을 함께 추가해 dotnet build/test가 한 명령으로 수행되도록 구성"
+    ],
+    "unresolved_items": [
+      "Manual E2E (네트워크 차단/회복, 실시간 UI 색상 변화) — 실제 데스크톱 환경에서의 검증 필요",
+      "01_plan.md의 금시세 코드 표기(CMDT_GD vs CMDT_GC) 최종 확정은 사용자 확인 가능"
+    ]
+  }
+}
