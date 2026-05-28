@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "next_stage": "06_document",
+  "human_gate_required": false,
+  "blocking_reason": "",
+  "risk_level": "medium",
+  "harness_commit_required": true,
+  "commit_created_by_model": false,
+  "commit_message_suggestion": "stock-start[20260528-115428][05_verify]",
+  "verify_target_commit": "69360e082a974bf0788fe0b8222cf3779cf8000d",
+  "test_changes_ready_for_harness_commit": false,
+  "produced_files": [
+    ".ai/features/stock-start/05_verify.md",
+    ".ai/features/stock-start/05_verify.result.json"
+  ],
+  "changed_files": [
+    ".ai/features/stock-start/05_verify.md",
+    ".ai/features/stock-start/05_verify.result.json"
+  ],
+  "test_commands": [
+    "dotnet test StockApp.sln -nologo",
+    "python -m py_compile .ai\\harness.py .ai\\harness_fast.py .ai\\harness_standard.py .ai\\templates\\docx_helper.py",
+    "git -c safe.directory=C:\\_SW\\Agent-Orchestration diff --check"
+  ],
+  "verification_summary": {
+    "existing_tests": "PASS: 통과 12개 / 실패 0개 / 건너뜀 0개",
+    "additional_tests": "없음",
+    "full_test_result": "PASS",
+    "harness_python_compile": "PASS",
+    "git_diff_check": "PASS",
+    "decision_verification": "PASS",
+    "document_consistency": "PASS with note: 04_fix changed_files omitted presets/full/04_fix.md, 기능 코드 영향 없음"
+  },
+  "fix_inputs": {
+    "status": "NONE",
+    "items": [],
+    "reproduction_commands": [],
+    "added_test_files": [],
+    "related_files": [],
+    "expected_behavior": "모든 테스트와 하네스 검증 명령 통과",
+    "actual_behavior": "모든 테스트와 하네스 검증 명령 통과"
+  },
+  "history_notes": {
+    "implemented": [
+      "WPF, MVVM, Prism.DryIoc 기반 StockApp 프로젝트가 빌드 및 테스트 가능함을 확인",
+      "KOSPI, 삼성전자, SK하이닉스, USD/KRW, 국내 금시세 항목의 ViewModel 구성과 서비스 호출 경로를 확인",
+      "03_review must_fix 항목인 CMDT_GD 전환과 ViewModel ConfigureAwait(false) 제거가 코드와 테스트에 반영됨을 확인",
+      "IFinanceService의 JSON parser 노출 제거, 타이머 예외 로깅, Dispose 취소 처리 보완이 반영됨을 확인"
+    ],
+    "risks": [
+      "실제 네이버 비공개 API 응답 스키마 변경이나 차단은 단위 테스트만으로 완전히 검증할 수 없음",
+      "WPF UI 렌더링과 실제 5초 주기 갱신은 자동 UI 테스트로 검증하지 않았음"
+    ],
+    "future_improvements": [
+      "공식 또는 계약된 시세 API로 교체 가능한 provider 옵션화",
+      "WinAppDriver 등으로 WPF UI smoke/E2E 테스트 추가",
+      "04_fix 산출물 changed_files에 하네스/provider preset 변경도 포함하도록 기록 정합성 개선"
+    ],
+    "decisions": [
+      "기존 테스트 12개가 정상/부분 실패/파싱/Dispose 경로를 포함하므로 05_verify에서 신규 테스트를 추가하지 않음",
+      "04_fix의 changed_files 누락은 기능 코드와 검증 결과에 영향이 없어 PASS 차단 사유로 보지 않음",
+      "하네스 검증 명령과 모델 직접 실행 명령이 일치하므로 하네스 판정 우선 원칙을 그대로 적용함"
+    ],
+    "unresolved_items": []
+  },
+  "model_mismatch": false,
+  "actual_model": "Codex",
+  "harness_final_authority": true
+}
