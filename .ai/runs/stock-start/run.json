@@ -1,0 +1,934 @@
+{
+  "feature_name": "stock-start",
+  "feature_name_locked": true,
+  "request": "코스피, 하이닉스, 삼성전자 주식을 실시간으로 화면에 보여주고 그 아래에 환율과 금시세 나오는 프로그램을 WPF, MVVM, Prism 방식을 이용하여 c# 프로젝트로 만들어줘",
+  "pipeline_mode": "full",
+  "performance": "medium",
+  "defaults_mode": true,
+  "current_stage": "done",
+  "status": "complete",
+  "created_at": "2026-05-28T11:12:14",
+  "updated_at": "2026-05-28T12:06:39",
+  "baseline_dirty": [],
+  "attempts": {
+    "00_specify": 1,
+    "01_plan": 1,
+    "02_develop": 2,
+    "03_review": 1,
+    "04_fix": 2,
+    "05_verify": 1,
+    "06_document": 1
+  },
+  "commits": {
+    "02_develop": "145ecbd215d0e7884c16a4e1e02990f8990c427a",
+    "04_fix": "69360e082a974bf0788fe0b8222cf3779cf8000d",
+    "05_verify": "dfc11400ba7965acd54d48e2dfbd371c6f2d3c48"
+  },
+  "approved_stages": [
+    "00_specify"
+  ],
+  "events": [
+    {
+      "at": "2026-05-28T11:12:14",
+      "event": "run_created",
+      "stage": "00_specify",
+      "message": "created feature run",
+      "request": "코스피, 하이닉스, 삼성전자 주식을 실시간으로 화면에 보여주고 그 아래에 환율과 금시세 나오는 프로그램을 WPF, MVVM, Prism 방식을 이용하여 c# 프로젝트로 만들어줘",
+      "feature": "stock-start",
+      "performance": "medium",
+      "defaults_mode": true
+    },
+    {
+      "at": "2026-05-28T11:12:15",
+      "event": "prompt_generated",
+      "stage": "00_specify",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/00_specify_attempt1.md"
+    },
+    {
+      "at": "2026-05-28T11:12:15",
+      "event": "auto_started",
+      "stage": "00_specify",
+      "message": "automatic execution started",
+      "yes": true,
+      "timeout_seconds": 3600,
+      "max_steps": 30,
+      "max_verify_fix_retries": 3
+    },
+    {
+      "at": "2026-05-28T11:12:15",
+      "event": "auto_step",
+      "stage": "00_specify",
+      "message": "evaluating run state",
+      "step": 1,
+      "status": "waiting_for_model"
+    },
+    {
+      "at": "2026-05-28T11:12:15",
+      "event": "provider_started",
+      "stage": "00_specify",
+      "message": "running codex",
+      "provider": "codex",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:14:01",
+      "event": "provider_completed",
+      "stage": "00_specify",
+      "message": "codex completed",
+      "provider": "codex",
+      "stdout": ".ai/runs/stock-start/logs/00_specify_attempt1_codex.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/00_specify_attempt1_codex.err.txt",
+      "elapsed_seconds": 106.38
+    },
+    {
+      "at": "2026-05-28T11:14:01",
+      "event": "stage_result",
+      "stage": "00_specify",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "01_plan"
+    },
+    {
+      "at": "2026-05-28T11:14:01",
+      "event": "blocked",
+      "stage": "00_specify",
+      "message": "Human gate approval required.",
+      "next_stage": "01_plan"
+    },
+    {
+      "at": "2026-05-28T11:14:01",
+      "event": "approved",
+      "stage": "00_specify",
+      "message": "human gate approved"
+    },
+    {
+      "at": "2026-05-28T11:14:02",
+      "event": "prompt_generated",
+      "stage": "01_plan",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/01_plan_attempt1.md"
+    },
+    {
+      "at": "2026-05-28T11:14:02",
+      "event": "auto_step",
+      "stage": "01_plan",
+      "message": "evaluating run state",
+      "step": 3,
+      "status": "waiting_for_model"
+    },
+    {
+      "at": "2026-05-28T11:14:02",
+      "event": "provider_started",
+      "stage": "01_plan",
+      "message": "running agy",
+      "provider": "agy",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:18:36",
+      "event": "provider_completed",
+      "stage": "01_plan",
+      "message": "agy completed",
+      "provider": "agy",
+      "stdout": ".ai/runs/stock-start/logs/01_plan_attempt1_agy.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/01_plan_attempt1_agy.err.txt",
+      "elapsed_seconds": 274.48
+    },
+    {
+      "at": "2026-05-28T11:18:36",
+      "event": "stage_result",
+      "stage": "01_plan",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "02_develop"
+    },
+    {
+      "at": "2026-05-28T11:18:37",
+      "event": "commit_skipped",
+      "stage": "01_plan",
+      "message": "stage does not commit"
+    },
+    {
+      "at": "2026-05-28T11:18:37",
+      "event": "stage_advanced",
+      "stage": "01_plan",
+      "message": "advanced to next stage",
+      "next_stage": "02_develop"
+    },
+    {
+      "at": "2026-05-28T11:18:37",
+      "event": "prompt_generated",
+      "stage": "02_develop",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/02_develop_attempt1.md"
+    },
+    {
+      "at": "2026-05-28T11:18:37",
+      "event": "auto_step",
+      "stage": "02_develop",
+      "message": "evaluating run state",
+      "step": 4,
+      "status": "waiting_for_model"
+    },
+    {
+      "at": "2026-05-28T11:18:38",
+      "event": "provider_started",
+      "stage": "02_develop",
+      "message": "running claude",
+      "provider": "claude",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:26:59",
+      "event": "defaults_mode_enabled",
+      "stage": "02_develop",
+      "message": "defaults mode enabled before retry"
+    },
+    {
+      "at": "2026-05-28T11:26:59",
+      "event": "prompt_generated",
+      "stage": "02_develop",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/02_develop_attempt2.md"
+    },
+    {
+      "at": "2026-05-28T11:26:59",
+      "event": "retry_prompt_generated",
+      "stage": "02_develop",
+      "message": "generated enriched retry prompt"
+    },
+    {
+      "at": "2026-05-28T11:26:59",
+      "event": "provider_started",
+      "stage": "02_develop",
+      "message": "running claude",
+      "provider": "claude",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:33:42",
+      "event": "provider_completed",
+      "stage": "02_develop",
+      "message": "claude completed",
+      "provider": "claude",
+      "stdout": ".ai/runs/stock-start/logs/02_develop_attempt2_claude.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/02_develop_attempt2_claude.err.txt",
+      "elapsed_seconds": 402.05
+    },
+    {
+      "at": "2026-05-28T11:33:42",
+      "event": "stage_result",
+      "stage": "02_develop",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "03_review"
+    },
+    {
+      "at": "2026-05-28T11:33:42",
+      "event": "blocked",
+      "stage": "02_develop",
+      "message": "Write policy violation: StockApp.sln is outside allowed_writes",
+      "next_stage": "02_develop"
+    },
+    {
+      "at": "2026-05-28T11:39:04",
+      "event": "defaults_mode_enabled",
+      "stage": "02_develop",
+      "message": "defaults mode enabled before resuming"
+    },
+    {
+      "at": "2026-05-28T11:44:57",
+      "event": "stage_result",
+      "stage": "02_develop",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "03_review"
+    },
+    {
+      "at": "2026-05-28T11:44:57",
+      "event": "commit_start",
+      "stage": "02_develop",
+      "message": "creating stage commit",
+      "amend": false,
+      "paths": ".ai/features/,.ai/harness.py,.ai/project_contract.md,StockApp.sln,src/StockApp/,tests/"
+    },
+    {
+      "at": "2026-05-28T11:44:58",
+      "event": "commit_created",
+      "stage": "02_develop",
+      "message": "stage commit recorded",
+      "sha": "145ecbd215d0e7884c16a4e1e02990f8990c427a",
+      "paths": ".ai/features/,.ai/harness.py,.ai/project_contract.md,StockApp.sln,src/StockApp/,tests/"
+    },
+    {
+      "at": "2026-05-28T11:44:58",
+      "event": "stage_advanced",
+      "stage": "02_develop",
+      "message": "advanced to next stage",
+      "next_stage": "03_review"
+    },
+    {
+      "at": "2026-05-28T11:44:58",
+      "event": "prompt_generated",
+      "stage": "03_review",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/03_review_attempt1.md"
+    },
+    {
+      "at": "2026-05-28T11:45:08",
+      "event": "defaults_mode_enabled",
+      "stage": "03_review",
+      "message": "defaults mode enabled for existing run"
+    },
+    {
+      "at": "2026-05-28T11:45:08",
+      "event": "auto_started",
+      "stage": "03_review",
+      "message": "automatic execution started",
+      "yes": true,
+      "timeout_seconds": 3600,
+      "max_steps": 30,
+      "max_verify_fix_retries": 3
+    },
+    {
+      "at": "2026-05-28T11:45:08",
+      "event": "auto_step",
+      "stage": "03_review",
+      "message": "evaluating run state",
+      "step": 1,
+      "status": "waiting_for_model"
+    },
+    {
+      "at": "2026-05-28T11:45:08",
+      "event": "provider_started",
+      "stage": "03_review",
+      "message": "running agy",
+      "provider": "agy",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:46:34",
+      "event": "provider_completed",
+      "stage": "03_review",
+      "message": "agy completed",
+      "provider": "agy",
+      "stdout": ".ai/runs/stock-start/logs/03_review_attempt1_agy.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/03_review_attempt1_agy.err.txt",
+      "elapsed_seconds": 86.59
+    },
+    {
+      "at": "2026-05-28T11:46:34",
+      "event": "stage_result",
+      "stage": "03_review",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "04_fix"
+    },
+    {
+      "at": "2026-05-28T11:46:35",
+      "event": "commit_skipped",
+      "stage": "03_review",
+      "message": "stage does not commit"
+    },
+    {
+      "at": "2026-05-28T11:46:35",
+      "event": "stage_advanced",
+      "stage": "03_review",
+      "message": "advanced to next stage",
+      "next_stage": "04_fix"
+    },
+    {
+      "at": "2026-05-28T11:46:35",
+      "event": "prompt_generated",
+      "stage": "04_fix",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/04_fix_attempt1.md"
+    },
+    {
+      "at": "2026-05-28T11:46:35",
+      "event": "auto_step",
+      "stage": "04_fix",
+      "message": "evaluating run state",
+      "step": 2,
+      "status": "waiting_for_model"
+    },
+    {
+      "at": "2026-05-28T11:46:35",
+      "event": "provider_started",
+      "stage": "04_fix",
+      "message": "running claude",
+      "provider": "claude",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:48:09",
+      "event": "provider_failed",
+      "stage": "04_fix",
+      "message": "claude exited with 1",
+      "provider": "claude",
+      "returncode": 1,
+      "stdout": ".ai/runs/stock-start/logs/04_fix_attempt1_claude.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/04_fix_attempt1_claude.err.txt",
+      "provider_log": ".ai/runs/stock-start/logs/04_fix_attempt1_claude.cli.log",
+      "retry_command": "python .ai\\harness.py retry stock-start --auto --yes --defaults",
+      "elapsed_seconds": 93.13
+    },
+    {
+      "at": "2026-05-28T11:51:05",
+      "event": "defaults_mode_enabled",
+      "stage": "04_fix",
+      "message": "defaults mode enabled before retry"
+    },
+    {
+      "at": "2026-05-28T11:51:06",
+      "event": "prompt_generated",
+      "stage": "04_fix",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/04_fix_attempt2.md"
+    },
+    {
+      "at": "2026-05-28T11:51:06",
+      "event": "retry_prompt_generated",
+      "stage": "04_fix",
+      "message": "generated enriched retry prompt"
+    },
+    {
+      "at": "2026-05-28T11:51:06",
+      "event": "provider_started",
+      "stage": "04_fix",
+      "message": "running agy",
+      "provider": "agy",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:52:15",
+      "event": "provider_completed",
+      "stage": "04_fix",
+      "message": "agy completed",
+      "provider": "agy",
+      "stdout": ".ai/runs/stock-start/logs/04_fix_attempt2_agy.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/04_fix_attempt2_agy.err.txt",
+      "elapsed_seconds": 68.59
+    },
+    {
+      "at": "2026-05-28T11:52:15",
+      "event": "stage_result",
+      "stage": "04_fix",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "05_verify"
+    },
+    {
+      "at": "2026-05-28T11:52:15",
+      "event": "commit_start",
+      "stage": "04_fix",
+      "message": "creating stage commit",
+      "amend": false,
+      "paths": ".ai/features/stock-start/03_review.md,.ai/features/stock-start/03_review.result.json,.ai/features/stock-start/04_fix.md,.ai/features/stock-start/04_fix.result.json,presets/full/04_fix.md,src/StockApp/Services/IFinanceService.cs,src/StockApp/Services/NaverFinanceService.cs,src/StockApp/ViewModels/MainWindowViewModel.cs,tests/StockApp.Tests/MainWindowViewModelTests.cs,tests/StockApp.Tests/NaverFinanceServiceTests.cs"
+    },
+    {
+      "at": "2026-05-28T11:52:16",
+      "event": "commit_created",
+      "stage": "04_fix",
+      "message": "stage commit recorded",
+      "sha": "69360e082a974bf0788fe0b8222cf3779cf8000d",
+      "paths": ".ai/features/stock-start/03_review.md,.ai/features/stock-start/03_review.result.json,.ai/features/stock-start/04_fix.md,.ai/features/stock-start/04_fix.result.json,presets/full/04_fix.md,src/StockApp/Services/IFinanceService.cs,src/StockApp/Services/NaverFinanceService.cs,src/StockApp/ViewModels/MainWindowViewModel.cs,tests/StockApp.Tests/MainWindowViewModelTests.cs,tests/StockApp.Tests/NaverFinanceServiceTests.cs"
+    },
+    {
+      "at": "2026-05-28T11:52:16",
+      "event": "stage_advanced",
+      "stage": "04_fix",
+      "message": "advanced to next stage",
+      "next_stage": "05_verify"
+    },
+    {
+      "at": "2026-05-28T11:52:16",
+      "event": "prompt_generated",
+      "stage": "05_verify",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/05_verify_attempt1.md"
+    },
+    {
+      "at": "2026-05-28T11:52:16",
+      "event": "auto_started",
+      "stage": "05_verify",
+      "message": "automatic execution started",
+      "yes": true,
+      "timeout_seconds": 3600,
+      "max_steps": 30,
+      "max_verify_fix_retries": 3
+    },
+    {
+      "at": "2026-05-28T11:52:16",
+      "event": "auto_step",
+      "stage": "05_verify",
+      "message": "evaluating run state",
+      "step": 1,
+      "status": "waiting_for_model"
+    },
+    {
+      "at": "2026-05-28T11:52:16",
+      "event": "provider_started",
+      "stage": "05_verify",
+      "message": "running codex",
+      "provider": "codex",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:55:59",
+      "event": "provider_completed",
+      "stage": "05_verify",
+      "message": "codex completed",
+      "provider": "codex",
+      "stdout": ".ai/runs/stock-start/logs/05_verify_attempt1_codex.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/05_verify_attempt1_codex.err.txt",
+      "elapsed_seconds": 222.45
+    },
+    {
+      "at": "2026-05-28T11:55:59",
+      "event": "stage_result",
+      "stage": "05_verify",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "06_document"
+    },
+    {
+      "at": "2026-05-28T11:56:00",
+      "event": "harness_verification_started",
+      "stage": "05_verify",
+      "message": "running configured verification commands",
+      "count": 2
+    },
+    {
+      "at": "2026-05-28T11:56:00",
+      "event": "harness_verification_completed",
+      "stage": "05_verify",
+      "message": "harness verification completed",
+      "status": "PASS",
+      "result": ".ai/runs/stock-start/verification/latest.json",
+      "failed": ""
+    },
+    {
+      "at": "2026-05-28T11:56:00",
+      "event": "commit_start",
+      "stage": "05_verify",
+      "message": "creating stage commit",
+      "amend": false,
+      "paths": ".ai/features/stock-start/05_verify.md,.ai/features/stock-start/05_verify.result.json"
+    },
+    {
+      "at": "2026-05-28T11:56:00",
+      "event": "commit_created",
+      "stage": "05_verify",
+      "message": "stage commit recorded",
+      "sha": "dfc11400ba7965acd54d48e2dfbd371c6f2d3c48",
+      "paths": ".ai/features/stock-start/05_verify.md,.ai/features/stock-start/05_verify.result.json"
+    },
+    {
+      "at": "2026-05-28T11:56:00",
+      "event": "stage_advanced",
+      "stage": "05_verify",
+      "message": "advanced to next stage",
+      "next_stage": "06_document"
+    },
+    {
+      "at": "2026-05-28T11:56:01",
+      "event": "prompt_generated",
+      "stage": "06_document",
+      "message": "generated prompt",
+      "path": ".ai/runs/stock-start/prompts/06_document_attempt1.md"
+    },
+    {
+      "at": "2026-05-28T11:56:01",
+      "event": "auto_step",
+      "stage": "06_document",
+      "message": "evaluating run state",
+      "step": 2,
+      "status": "waiting_for_model"
+    },
+    {
+      "at": "2026-05-28T11:56:01",
+      "event": "provider_started",
+      "stage": "06_document",
+      "message": "running agy",
+      "provider": "agy",
+      "performance": "medium",
+      "timeout_seconds": 3600
+    },
+    {
+      "at": "2026-05-28T11:57:14",
+      "event": "provider_completed",
+      "stage": "06_document",
+      "message": "agy completed",
+      "provider": "agy",
+      "stdout": ".ai/runs/stock-start/logs/06_document_attempt1_agy.out.txt",
+      "stderr": ".ai/runs/stock-start/logs/06_document_attempt1_agy.err.txt",
+      "elapsed_seconds": 72.59
+    },
+    {
+      "at": "2026-05-28T11:57:14",
+      "event": "stage_result",
+      "stage": "06_document",
+      "message": "parsed stage result",
+      "status": "PASS",
+      "next_stage": "done"
+    },
+    {
+      "at": "2026-05-28T11:57:14",
+      "event": "commit_skipped",
+      "stage": "06_document",
+      "message": "stage does not commit"
+    },
+    {
+      "at": "2026-05-28T11:57:14",
+      "event": "pc_candidate_extraction_queued",
+      "stage": "06_document",
+      "message": "queued project contract candidate extraction"
+    },
+    {
+      "at": "2026-05-28T11:57:14",
+      "event": "pc_candidate_extraction_started",
+      "stage": "pc_candidates",
+      "message": "extracting project contract candidates"
+    },
+    {
+      "at": "2026-05-28T11:57:21",
+      "event": "pc_candidate_extraction_failed",
+      "stage": "pc_candidates",
+      "message": "PC candidate extraction provider failed. stdout=.ai/runs/stock-start/logs/pc_candidates_claude_20260528-115714.out.txt stderr=.ai/runs/stock-start/logs/pc_candidates_claude_20260528-115714.err.txt"
+    },
+    {
+      "at": "2026-05-28T11:58:37",
+      "event": "pc_candidate_extraction_started",
+      "stage": "pc_candidates",
+      "message": "extracting project contract candidates"
+    },
+    {
+      "at": "2026-05-28T11:59:14",
+      "event": "pc_candidate_extraction_failed",
+      "stage": "pc_candidates",
+      "message": "PC candidate extraction did not return a JSON object with a candidates list. stdout=.ai/runs/stock-start/logs/pc_candidates_agy_20260528-115837.out.txt"
+    },
+    {
+      "at": "2026-05-28T12:06:13",
+      "event": "pc_candidate_extraction_started",
+      "stage": "pc_candidates",
+      "message": "extracting project contract candidates"
+    },
+    {
+      "at": "2026-05-28T12:06:39",
+      "event": "pc_candidate_extraction_completed",
+      "stage": "pc_candidates",
+      "message": "project contract candidates extracted",
+      "raw_candidate_count": 3,
+      "candidate_count": 3,
+      "filtered_out_count": 0,
+      "recorded_count": 3
+    },
+    {
+      "at": "2026-05-28T12:06:39",
+      "event": "complete",
+      "stage": "06_document",
+      "message": "run complete"
+    },
+    {
+      "at": "2026-05-28T12:06:39",
+      "event": "history_failed",
+      "stage": "06_document",
+      "message": "project history update failed: [WinError 5] 액세스가 거부되었습니다: 'C:\\\\_SW\\\\Agent-Orchestration\\\\.ai\\\\history\\\\decisions.json.tmp' -> 'C:\\\\_SW\\\\Agent-Orchestration\\\\.ai\\\\history\\\\decisions.json'"
+    }
+  ],
+  "stage_file_snapshots": {
+    "00_specify": {
+      ".gitattributes": "d8fb0de4792538f93822b2c0d235604921299d5e54a3d6ec7a6cb34536e8bf1e",
+      ".gitignore": "a6fea56ad58b32fd856440b26898e9cd74d62a0528c5ce806f39fe90a9655737",
+      "README.md": "91d8028f8c1d6066a8cf8a791d01f9636e1f0dd079ebff407d88abf4ed0cf1f0",
+      ".ai/harness.config.json": "c368d705917411296d92483dc8ede9761146e3c6270fa548d5fc37c5ff2fd384",
+      ".ai/harness.py": "2434b44d5371d40717190cbb92409b548c3ba272ddde684763c2482b1bf1bf70",
+      ".ai/harness_fast.py": "260fd6cc825ceb4c021af5099d008cfcf5a65b36ec252035f973980721382fba",
+      ".ai/harness_standard.py": "0ae5e931cac7b62aee1a1ad0f993000d1cc8fe1b36db1bf7b6312cd3622d7758",
+      ".ai/pc_review.py": "2ec28830856e29649e5f3dd392d0f41292d93bfb99a97ffdf9cf118f332dfdf0",
+      ".ai/project_contract.md": "c9e20027386c34bfcd60c52a4b4fcf0b18b5a742ce216ad960dc5b9fad56ddd3",
+      ".ai/templates/docx_helper.py": "dc0b500ff4a29edcf8cf816e199291da196b3cd42ed8840957323fbcaa5811b5",
+      "presets/fast/00_specify.md": "0554c2cece2a3b96f8162b28fd202d79a0062d145c18dfcccf185d7574d4aac7",
+      "presets/fast/01_develop.md": "886619978f47555edee11050849e803138312f2681abce43c918cf2bd0d279ad",
+      "presets/fast/02_verify.md": "7943198d37d8f7208f4ae08ed712536bb9aaf2daa8394e77787f31038de6e0be",
+      "presets/full/00_specify.md": "3936c49d394ab9caa9778ed902793fa7eaf44ad4f00c1b4f7b72d8eabd582ea6",
+      "presets/full/01_plan.md": "c81712098d0ae66e7b2cb4956574eb67571e9565c228d798b9928a0b295461ec",
+      "presets/full/02_develop.md": "ecaa5755c84560983e884831610c7d2bae4c2dba61e104c196112a539d2b101c",
+      "presets/full/03_review.md": "b44545a8eb2322284f939fab3bc666b0bfe603c80a454cd0b2a45e57392c2f91",
+      "presets/full/04_fix.md": "60382db544d1e816d3bc35f2c515a798ccb52a7492f4e1c5ef2672007b9eb5a9",
+      "presets/full/05_verify.md": "573d64f8bed4731c9aafba7bfe06afe55be2271d27814a55a26ab2233d64e66c",
+      "presets/full/06_document.md": "b9cebdd85b3e5da91e4182ea978fd228286707f0edf79ae7e58ec5f7693a50e3",
+      "presets/standard/00_specify.md": "fe37dee8bbfcaaa4cd8d2bdb8208d64546cd21904611841d3ec14d9b22dc08a7",
+      "presets/standard/01_develop.md": "fcb46b64df961bb4997dd073d48933d890bcb2368e9b3a7c2ba708e86a3965ef",
+      "presets/standard/02_review.md": "9185d0dfaf7cca322125a107c7de13c9a5ff432cfdc69d973b84c350f04daed3",
+      "presets/standard/03_fix.md": "a4c57fcc22940a1ec38fef56212c8552ee8ef1263621e3d3458ab7bbe8cd070f",
+      "presets/standard/04_verify.md": "e6d7e1be9ca5a9d65b66d1c8758be4d51546467afc44c1480b5e24da59503912",
+      "src/source_code_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "01_plan": {
+      ".gitattributes": "d8fb0de4792538f93822b2c0d235604921299d5e54a3d6ec7a6cb34536e8bf1e",
+      ".gitignore": "a6fea56ad58b32fd856440b26898e9cd74d62a0528c5ce806f39fe90a9655737",
+      "README.md": "91d8028f8c1d6066a8cf8a791d01f9636e1f0dd079ebff407d88abf4ed0cf1f0",
+      ".ai/harness.config.json": "c368d705917411296d92483dc8ede9761146e3c6270fa548d5fc37c5ff2fd384",
+      ".ai/harness.py": "2434b44d5371d40717190cbb92409b548c3ba272ddde684763c2482b1bf1bf70",
+      ".ai/harness_fast.py": "260fd6cc825ceb4c021af5099d008cfcf5a65b36ec252035f973980721382fba",
+      ".ai/harness_standard.py": "0ae5e931cac7b62aee1a1ad0f993000d1cc8fe1b36db1bf7b6312cd3622d7758",
+      ".ai/pc_review.py": "2ec28830856e29649e5f3dd392d0f41292d93bfb99a97ffdf9cf118f332dfdf0",
+      ".ai/project_contract.md": "c9e20027386c34bfcd60c52a4b4fcf0b18b5a742ce216ad960dc5b9fad56ddd3",
+      ".ai/features/stock-start/00_spec.md": "7bc7acb1f5e30082678572a752954cfe05c3a6ba442c7679ed4bd541a7ae143a",
+      ".ai/features/stock-start/00_spec.result.json": "9ef15f061eccde55b7f756a02a6e965e4e9457394a5f7bd335c20e6cdfb66e92",
+      ".ai/templates/docx_helper.py": "dc0b500ff4a29edcf8cf816e199291da196b3cd42ed8840957323fbcaa5811b5",
+      "presets/fast/00_specify.md": "0554c2cece2a3b96f8162b28fd202d79a0062d145c18dfcccf185d7574d4aac7",
+      "presets/fast/01_develop.md": "886619978f47555edee11050849e803138312f2681abce43c918cf2bd0d279ad",
+      "presets/fast/02_verify.md": "7943198d37d8f7208f4ae08ed712536bb9aaf2daa8394e77787f31038de6e0be",
+      "presets/full/00_specify.md": "3936c49d394ab9caa9778ed902793fa7eaf44ad4f00c1b4f7b72d8eabd582ea6",
+      "presets/full/01_plan.md": "c81712098d0ae66e7b2cb4956574eb67571e9565c228d798b9928a0b295461ec",
+      "presets/full/02_develop.md": "ecaa5755c84560983e884831610c7d2bae4c2dba61e104c196112a539d2b101c",
+      "presets/full/03_review.md": "b44545a8eb2322284f939fab3bc666b0bfe603c80a454cd0b2a45e57392c2f91",
+      "presets/full/04_fix.md": "60382db544d1e816d3bc35f2c515a798ccb52a7492f4e1c5ef2672007b9eb5a9",
+      "presets/full/05_verify.md": "573d64f8bed4731c9aafba7bfe06afe55be2271d27814a55a26ab2233d64e66c",
+      "presets/full/06_document.md": "b9cebdd85b3e5da91e4182ea978fd228286707f0edf79ae7e58ec5f7693a50e3",
+      "presets/standard/00_specify.md": "fe37dee8bbfcaaa4cd8d2bdb8208d64546cd21904611841d3ec14d9b22dc08a7",
+      "presets/standard/01_develop.md": "fcb46b64df961bb4997dd073d48933d890bcb2368e9b3a7c2ba708e86a3965ef",
+      "presets/standard/02_review.md": "9185d0dfaf7cca322125a107c7de13c9a5ff432cfdc69d973b84c350f04daed3",
+      "presets/standard/03_fix.md": "a4c57fcc22940a1ec38fef56212c8552ee8ef1263621e3d3458ab7bbe8cd070f",
+      "presets/standard/04_verify.md": "e6d7e1be9ca5a9d65b66d1c8758be4d51546467afc44c1480b5e24da59503912",
+      "src/source_code_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "02_develop": {
+      ".gitattributes": "d8fb0de4792538f93822b2c0d235604921299d5e54a3d6ec7a6cb34536e8bf1e",
+      ".gitignore": "a6fea56ad58b32fd856440b26898e9cd74d62a0528c5ce806f39fe90a9655737",
+      "README.md": "91d8028f8c1d6066a8cf8a791d01f9636e1f0dd079ebff407d88abf4ed0cf1f0",
+      ".ai/harness.config.json": "c368d705917411296d92483dc8ede9761146e3c6270fa548d5fc37c5ff2fd384",
+      ".ai/harness.py": "e5066bc08db438bd2f18b84c950a4c62bf411f2bbe4a821effb13ea1f016942a",
+      ".ai/harness_fast.py": "260fd6cc825ceb4c021af5099d008cfcf5a65b36ec252035f973980721382fba",
+      ".ai/harness_standard.py": "0ae5e931cac7b62aee1a1ad0f993000d1cc8fe1b36db1bf7b6312cd3622d7758",
+      ".ai/pc_review.py": "2ec28830856e29649e5f3dd392d0f41292d93bfb99a97ffdf9cf118f332dfdf0",
+      ".ai/project_contract.md": "c9e20027386c34bfcd60c52a4b4fcf0b18b5a742ce216ad960dc5b9fad56ddd3",
+      ".ai/features/stock-start/00_spec.md": "7bc7acb1f5e30082678572a752954cfe05c3a6ba442c7679ed4bd541a7ae143a",
+      ".ai/features/stock-start/00_spec.result.json": "9ef15f061eccde55b7f756a02a6e965e4e9457394a5f7bd335c20e6cdfb66e92",
+      ".ai/features/stock-start/01_plan.md": "515f0eabffc7f16878d429018dae302a188309353644b9a01e90cefc0e361a70",
+      ".ai/features/stock-start/01_plan.result.json": "dce71cf120b585c39d731c6c33b8bd0d60cbce6807cb7effd0626c83e0d5dfbf",
+      ".ai/templates/docx_helper.py": "dc0b500ff4a29edcf8cf816e199291da196b3cd42ed8840957323fbcaa5811b5",
+      "presets/fast/00_specify.md": "0554c2cece2a3b96f8162b28fd202d79a0062d145c18dfcccf185d7574d4aac7",
+      "presets/fast/01_develop.md": "886619978f47555edee11050849e803138312f2681abce43c918cf2bd0d279ad",
+      "presets/fast/02_verify.md": "7943198d37d8f7208f4ae08ed712536bb9aaf2daa8394e77787f31038de6e0be",
+      "presets/full/00_specify.md": "3936c49d394ab9caa9778ed902793fa7eaf44ad4f00c1b4f7b72d8eabd582ea6",
+      "presets/full/01_plan.md": "c81712098d0ae66e7b2cb4956574eb67571e9565c228d798b9928a0b295461ec",
+      "presets/full/02_develop.md": "ecaa5755c84560983e884831610c7d2bae4c2dba61e104c196112a539d2b101c",
+      "presets/full/03_review.md": "b44545a8eb2322284f939fab3bc666b0bfe603c80a454cd0b2a45e57392c2f91",
+      "presets/full/04_fix.md": "60382db544d1e816d3bc35f2c515a798ccb52a7492f4e1c5ef2672007b9eb5a9",
+      "presets/full/05_verify.md": "573d64f8bed4731c9aafba7bfe06afe55be2271d27814a55a26ab2233d64e66c",
+      "presets/full/06_document.md": "b9cebdd85b3e5da91e4182ea978fd228286707f0edf79ae7e58ec5f7693a50e3",
+      "presets/standard/00_specify.md": "fe37dee8bbfcaaa4cd8d2bdb8208d64546cd21904611841d3ec14d9b22dc08a7",
+      "presets/standard/01_develop.md": "fcb46b64df961bb4997dd073d48933d890bcb2368e9b3a7c2ba708e86a3965ef",
+      "presets/standard/02_review.md": "9185d0dfaf7cca322125a107c7de13c9a5ff432cfdc69d973b84c350f04daed3",
+      "presets/standard/03_fix.md": "a4c57fcc22940a1ec38fef56212c8552ee8ef1263621e3d3458ab7bbe8cd070f",
+      "presets/standard/04_verify.md": "e6d7e1be9ca5a9d65b66d1c8758be4d51546467afc44c1480b5e24da59503912",
+      "src/source_code_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "03_review": {
+      ".gitattributes": "d8fb0de4792538f93822b2c0d235604921299d5e54a3d6ec7a6cb34536e8bf1e",
+      ".gitignore": "a6fea56ad58b32fd856440b26898e9cd74d62a0528c5ce806f39fe90a9655737",
+      "README.md": "91d8028f8c1d6066a8cf8a791d01f9636e1f0dd079ebff407d88abf4ed0cf1f0",
+      "StockApp.sln": "a9f19288cec3d94a75c700589b2fbb63103443c3c7862220110bdc178e924d26",
+      ".ai/features/stock-start/00_spec.md": "7bc7acb1f5e30082678572a752954cfe05c3a6ba442c7679ed4bd541a7ae143a",
+      ".ai/features/stock-start/00_spec.result.json": "9ef15f061eccde55b7f756a02a6e965e4e9457394a5f7bd335c20e6cdfb66e92",
+      ".ai/features/stock-start/01_plan.md": "515f0eabffc7f16878d429018dae302a188309353644b9a01e90cefc0e361a70",
+      ".ai/features/stock-start/01_plan.result.json": "dce71cf120b585c39d731c6c33b8bd0d60cbce6807cb7effd0626c83e0d5dfbf",
+      ".ai/features/stock-start/02_dev.md": "465aa373dd1ddddea0fbdc6c3238e8f910722000ef0aa60fc6c28f860f8ae94d",
+      ".ai/features/stock-start/02_dev.result.json": "581074c73fcb813d8537009ecfb2be2f48b397ede5b2fd33e35cbd38ff7b1b9e",
+      "presets/fast/00_specify.md": "0554c2cece2a3b96f8162b28fd202d79a0062d145c18dfcccf185d7574d4aac7",
+      "presets/fast/01_develop.md": "886619978f47555edee11050849e803138312f2681abce43c918cf2bd0d279ad",
+      "presets/fast/02_verify.md": "7943198d37d8f7208f4ae08ed712536bb9aaf2daa8394e77787f31038de6e0be",
+      "presets/full/00_specify.md": "3936c49d394ab9caa9778ed902793fa7eaf44ad4f00c1b4f7b72d8eabd582ea6",
+      "presets/full/01_plan.md": "c81712098d0ae66e7b2cb4956574eb67571e9565c228d798b9928a0b295461ec",
+      "presets/full/02_develop.md": "ecaa5755c84560983e884831610c7d2bae4c2dba61e104c196112a539d2b101c",
+      "presets/full/03_review.md": "b44545a8eb2322284f939fab3bc666b0bfe603c80a454cd0b2a45e57392c2f91",
+      "presets/full/04_fix.md": "60382db544d1e816d3bc35f2c515a798ccb52a7492f4e1c5ef2672007b9eb5a9",
+      "presets/full/05_verify.md": "573d64f8bed4731c9aafba7bfe06afe55be2271d27814a55a26ab2233d64e66c",
+      "presets/full/06_document.md": "b9cebdd85b3e5da91e4182ea978fd228286707f0edf79ae7e58ec5f7693a50e3",
+      "presets/standard/00_specify.md": "fe37dee8bbfcaaa4cd8d2bdb8208d64546cd21904611841d3ec14d9b22dc08a7",
+      "presets/standard/01_develop.md": "fcb46b64df961bb4997dd073d48933d890bcb2368e9b3a7c2ba708e86a3965ef",
+      "presets/standard/02_review.md": "9185d0dfaf7cca322125a107c7de13c9a5ff432cfdc69d973b84c350f04daed3",
+      "presets/standard/03_fix.md": "a4c57fcc22940a1ec38fef56212c8552ee8ef1263621e3d3458ab7bbe8cd070f",
+      "presets/standard/04_verify.md": "e6d7e1be9ca5a9d65b66d1c8758be4d51546467afc44c1480b5e24da59503912",
+      "src/source_code_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/StockApp/App.xaml": "851ee513a1331fd0cde92aa3bcd6391ac21c8f77509ce49ab65a466b03d29508",
+      "src/StockApp/App.xaml.cs": "6153e2ffc1147e1d5dd72d1bec945c1f9471a38d96d23900eec9d857f056c0fe",
+      "src/StockApp/StockApp.csproj": "d8c0f4b0acaca1ced00f5943a726cce6a189cb1aee08651cba52200ce587eae5",
+      "src/StockApp/Models/FinanceItem.cs": "497dd539cd424d6a4c7286ff4ee92aaf0835b0de75d1edd66e595fbc007dba26",
+      "src/StockApp/Services/IFinanceService.cs": "b1c920910e052c8a60621738fa914b2e67d72f82f11500e19c2f52ad04b2e406",
+      "src/StockApp/Services/NaverFinanceService.cs": "fca84cb3227ba4b82a9cbb98a7b23dcc8c26a1818acf2fe8754cc42fd487529d",
+      "src/StockApp/ViewModels/MainWindowViewModel.cs": "eee20f050375d1b55f26a84de851ef299895d9cbac637278c1ddd43214719baf",
+      "src/StockApp/Views/MainWindow.xaml": "f3ecdc0672c5593da53019bdcf27a9205e055137f990af6b398f7ba5819c2b4f",
+      "src/StockApp/Views/MainWindow.xaml.cs": "16a28d22767405d087d5afef1af6407ecc5d1e13159a206cc58893d1014c0e1c",
+      "tests/StockApp.Tests/MainWindowViewModelTests.cs": "32f2de442cb4c5df550356cdda62370f41511717b5e4a906525c56310a3aa05c",
+      "tests/StockApp.Tests/NaverFinanceServiceTests.cs": "0d348a681c31bf3bbca9a45305f30cb9e0a9136bad630b96c49ef397bec10d86",
+      "tests/StockApp.Tests/StockApp.Tests.csproj": "ff930d9198688085d61b21c89185af3678cf176fe06fbb5ea19b58de5c1c781b"
+    },
+    "04_fix": {
+      ".gitattributes": "d8fb0de4792538f93822b2c0d235604921299d5e54a3d6ec7a6cb34536e8bf1e",
+      ".gitignore": "a6fea56ad58b32fd856440b26898e9cd74d62a0528c5ce806f39fe90a9655737",
+      "README.md": "91d8028f8c1d6066a8cf8a791d01f9636e1f0dd079ebff407d88abf4ed0cf1f0",
+      "StockApp.sln": "a9f19288cec3d94a75c700589b2fbb63103443c3c7862220110bdc178e924d26",
+      ".ai/features/stock-start/00_spec.md": "7bc7acb1f5e30082678572a752954cfe05c3a6ba442c7679ed4bd541a7ae143a",
+      ".ai/features/stock-start/00_spec.result.json": "9ef15f061eccde55b7f756a02a6e965e4e9457394a5f7bd335c20e6cdfb66e92",
+      ".ai/features/stock-start/01_plan.md": "515f0eabffc7f16878d429018dae302a188309353644b9a01e90cefc0e361a70",
+      ".ai/features/stock-start/01_plan.result.json": "dce71cf120b585c39d731c6c33b8bd0d60cbce6807cb7effd0626c83e0d5dfbf",
+      ".ai/features/stock-start/02_dev.md": "465aa373dd1ddddea0fbdc6c3238e8f910722000ef0aa60fc6c28f860f8ae94d",
+      ".ai/features/stock-start/02_dev.result.json": "581074c73fcb813d8537009ecfb2be2f48b397ede5b2fd33e35cbd38ff7b1b9e",
+      ".ai/features/stock-start/03_review.md": "dbe79fc04d77188d6e5e9e077ff3e778966b247b32a6aae05e78bb197d9780ce",
+      ".ai/features/stock-start/03_review.result.json": "d1eb5feb615c47bad4eda7ddabaf5286c47125d467f3d58819509926c8bc62a4",
+      "presets/fast/00_specify.md": "0554c2cece2a3b96f8162b28fd202d79a0062d145c18dfcccf185d7574d4aac7",
+      "presets/fast/01_develop.md": "886619978f47555edee11050849e803138312f2681abce43c918cf2bd0d279ad",
+      "presets/fast/02_verify.md": "7943198d37d8f7208f4ae08ed712536bb9aaf2daa8394e77787f31038de6e0be",
+      "presets/full/00_specify.md": "3936c49d394ab9caa9778ed902793fa7eaf44ad4f00c1b4f7b72d8eabd582ea6",
+      "presets/full/01_plan.md": "c81712098d0ae66e7b2cb4956574eb67571e9565c228d798b9928a0b295461ec",
+      "presets/full/02_develop.md": "ecaa5755c84560983e884831610c7d2bae4c2dba61e104c196112a539d2b101c",
+      "presets/full/03_review.md": "b44545a8eb2322284f939fab3bc666b0bfe603c80a454cd0b2a45e57392c2f91",
+      "presets/full/04_fix.md": "c4b36444aa992fbab9c6d3e8f95010f88c2bb753fbbea75932dd471a5fd8dc56",
+      "presets/full/05_verify.md": "573d64f8bed4731c9aafba7bfe06afe55be2271d27814a55a26ab2233d64e66c",
+      "presets/full/06_document.md": "b9cebdd85b3e5da91e4182ea978fd228286707f0edf79ae7e58ec5f7693a50e3",
+      "presets/standard/00_specify.md": "fe37dee8bbfcaaa4cd8d2bdb8208d64546cd21904611841d3ec14d9b22dc08a7",
+      "presets/standard/01_develop.md": "fcb46b64df961bb4997dd073d48933d890bcb2368e9b3a7c2ba708e86a3965ef",
+      "presets/standard/02_review.md": "9185d0dfaf7cca322125a107c7de13c9a5ff432cfdc69d973b84c350f04daed3",
+      "presets/standard/03_fix.md": "a4c57fcc22940a1ec38fef56212c8552ee8ef1263621e3d3458ab7bbe8cd070f",
+      "presets/standard/04_verify.md": "e6d7e1be9ca5a9d65b66d1c8758be4d51546467afc44c1480b5e24da59503912",
+      "src/source_code_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/StockApp/App.xaml": "851ee513a1331fd0cde92aa3bcd6391ac21c8f77509ce49ab65a466b03d29508",
+      "src/StockApp/App.xaml.cs": "6153e2ffc1147e1d5dd72d1bec945c1f9471a38d96d23900eec9d857f056c0fe",
+      "src/StockApp/StockApp.csproj": "d8c0f4b0acaca1ced00f5943a726cce6a189cb1aee08651cba52200ce587eae5",
+      "src/StockApp/Models/FinanceItem.cs": "497dd539cd424d6a4c7286ff4ee92aaf0835b0de75d1edd66e595fbc007dba26",
+      "src/StockApp/Services/IFinanceService.cs": "a7f60b08682adbc6f6221ab4ff171e5a973893738fd80b05fa2cea924c4fd906",
+      "src/StockApp/Services/NaverFinanceService.cs": "7e87b2b03c432a75314bfac49b04e6c18fbc50bdd75a615f06ac16f923f66e83",
+      "src/StockApp/ViewModels/MainWindowViewModel.cs": "882c2f0f0567e0caece8ee166f1fc1f385824976a75c3037e6b7fd301d98e1ff",
+      "src/StockApp/Views/MainWindow.xaml": "f3ecdc0672c5593da53019bdcf27a9205e055137f990af6b398f7ba5819c2b4f",
+      "src/StockApp/Views/MainWindow.xaml.cs": "16a28d22767405d087d5afef1af6407ecc5d1e13159a206cc58893d1014c0e1c",
+      "tests/StockApp.Tests/MainWindowViewModelTests.cs": "32f2de442cb4c5df550356cdda62370f41511717b5e4a906525c56310a3aa05c",
+      "tests/StockApp.Tests/NaverFinanceServiceTests.cs": "0d348a681c31bf3bbca9a45305f30cb9e0a9136bad630b96c49ef397bec10d86",
+      "tests/StockApp.Tests/StockApp.Tests.csproj": "ff930d9198688085d61b21c89185af3678cf176fe06fbb5ea19b58de5c1c781b"
+    },
+    "05_verify": {
+      ".gitattributes": "d8fb0de4792538f93822b2c0d235604921299d5e54a3d6ec7a6cb34536e8bf1e",
+      ".gitignore": "a6fea56ad58b32fd856440b26898e9cd74d62a0528c5ce806f39fe90a9655737",
+      "README.md": "91d8028f8c1d6066a8cf8a791d01f9636e1f0dd079ebff407d88abf4ed0cf1f0",
+      "StockApp.sln": "a9f19288cec3d94a75c700589b2fbb63103443c3c7862220110bdc178e924d26",
+      ".ai/features/stock-start/00_spec.md": "7bc7acb1f5e30082678572a752954cfe05c3a6ba442c7679ed4bd541a7ae143a",
+      ".ai/features/stock-start/00_spec.result.json": "9ef15f061eccde55b7f756a02a6e965e4e9457394a5f7bd335c20e6cdfb66e92",
+      ".ai/features/stock-start/01_plan.md": "515f0eabffc7f16878d429018dae302a188309353644b9a01e90cefc0e361a70",
+      ".ai/features/stock-start/01_plan.result.json": "dce71cf120b585c39d731c6c33b8bd0d60cbce6807cb7effd0626c83e0d5dfbf",
+      ".ai/features/stock-start/02_dev.md": "465aa373dd1ddddea0fbdc6c3238e8f910722000ef0aa60fc6c28f860f8ae94d",
+      ".ai/features/stock-start/02_dev.result.json": "581074c73fcb813d8537009ecfb2be2f48b397ede5b2fd33e35cbd38ff7b1b9e",
+      ".ai/features/stock-start/03_review.md": "dbe79fc04d77188d6e5e9e077ff3e778966b247b32a6aae05e78bb197d9780ce",
+      ".ai/features/stock-start/03_review.result.json": "d1eb5feb615c47bad4eda7ddabaf5286c47125d467f3d58819509926c8bc62a4",
+      ".ai/features/stock-start/04_fix.md": "53e76d2e92221a2fc8afbea8e56495c60c40efb213f5e456d6c44dc895bb7ed3",
+      ".ai/features/stock-start/04_fix.result.json": "104860b8f54018f4ae51ca37df78ab452c07889fa9b209bcbb92a4b1f218a1ae",
+      "presets/fast/00_specify.md": "0554c2cece2a3b96f8162b28fd202d79a0062d145c18dfcccf185d7574d4aac7",
+      "presets/fast/01_develop.md": "886619978f47555edee11050849e803138312f2681abce43c918cf2bd0d279ad",
+      "presets/fast/02_verify.md": "7943198d37d8f7208f4ae08ed712536bb9aaf2daa8394e77787f31038de6e0be",
+      "presets/full/00_specify.md": "3936c49d394ab9caa9778ed902793fa7eaf44ad4f00c1b4f7b72d8eabd582ea6",
+      "presets/full/01_plan.md": "c81712098d0ae66e7b2cb4956574eb67571e9565c228d798b9928a0b295461ec",
+      "presets/full/02_develop.md": "ecaa5755c84560983e884831610c7d2bae4c2dba61e104c196112a539d2b101c",
+      "presets/full/03_review.md": "b44545a8eb2322284f939fab3bc666b0bfe603c80a454cd0b2a45e57392c2f91",
+      "presets/full/04_fix.md": "c4b36444aa992fbab9c6d3e8f95010f88c2bb753fbbea75932dd471a5fd8dc56",
+      "presets/full/05_verify.md": "573d64f8bed4731c9aafba7bfe06afe55be2271d27814a55a26ab2233d64e66c",
+      "presets/full/06_document.md": "b9cebdd85b3e5da91e4182ea978fd228286707f0edf79ae7e58ec5f7693a50e3",
+      "presets/standard/00_specify.md": "fe37dee8bbfcaaa4cd8d2bdb8208d64546cd21904611841d3ec14d9b22dc08a7",
+      "presets/standard/01_develop.md": "fcb46b64df961bb4997dd073d48933d890bcb2368e9b3a7c2ba708e86a3965ef",
+      "presets/standard/02_review.md": "9185d0dfaf7cca322125a107c7de13c9a5ff432cfdc69d973b84c350f04daed3",
+      "presets/standard/03_fix.md": "a4c57fcc22940a1ec38fef56212c8552ee8ef1263621e3d3458ab7bbe8cd070f",
+      "presets/standard/04_verify.md": "e6d7e1be9ca5a9d65b66d1c8758be4d51546467afc44c1480b5e24da59503912",
+      "src/source_code_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/StockApp/App.xaml": "851ee513a1331fd0cde92aa3bcd6391ac21c8f77509ce49ab65a466b03d29508",
+      "src/StockApp/App.xaml.cs": "6153e2ffc1147e1d5dd72d1bec945c1f9471a38d96d23900eec9d857f056c0fe",
+      "src/StockApp/StockApp.csproj": "d8c0f4b0acaca1ced00f5943a726cce6a189cb1aee08651cba52200ce587eae5",
+      "src/StockApp/Models/FinanceItem.cs": "497dd539cd424d6a4c7286ff4ee92aaf0835b0de75d1edd66e595fbc007dba26",
+      "src/StockApp/Services/IFinanceService.cs": "a7f60b08682adbc6f6221ab4ff171e5a973893738fd80b05fa2cea924c4fd906",
+      "src/StockApp/Services/NaverFinanceService.cs": "7e87b2b03c432a75314bfac49b04e6c18fbc50bdd75a615f06ac16f923f66e83",
+      "src/StockApp/ViewModels/MainWindowViewModel.cs": "0867e6ccd80cd7d7383969efd8d4ee1c03d8e5b66b860cbbe0a19f6d5032bf8f",
+      "src/StockApp/Views/MainWindow.xaml": "f3ecdc0672c5593da53019bdcf27a9205e055137f990af6b398f7ba5819c2b4f",
+      "src/StockApp/Views/MainWindow.xaml.cs": "16a28d22767405d087d5afef1af6407ecc5d1e13159a206cc58893d1014c0e1c",
+      "tests/StockApp.Tests/MainWindowViewModelTests.cs": "56abd4e144910f47533df04c6a0af09a6b0f671e1c44dee4615d430bd7bb2d1a",
+      "tests/StockApp.Tests/NaverFinanceServiceTests.cs": "b0aee438d7bd714a13699d93ea9e6a4346e6a953bc9b460cff503bf577efa09a",
+      "tests/StockApp.Tests/StockApp.Tests.csproj": "ff930d9198688085d61b21c89185af3678cf176fe06fbb5ea19b58de5c1c781b"
+    },
+    "06_document": {
+      ".gitattributes": "d8fb0de4792538f93822b2c0d235604921299d5e54a3d6ec7a6cb34536e8bf1e",
+      ".gitignore": "a6fea56ad58b32fd856440b26898e9cd74d62a0528c5ce806f39fe90a9655737",
+      "README.md": "91d8028f8c1d6066a8cf8a791d01f9636e1f0dd079ebff407d88abf4ed0cf1f0",
+      "StockApp.sln": "a9f19288cec3d94a75c700589b2fbb63103443c3c7862220110bdc178e924d26",
+      ".ai/features/stock-start/00_spec.md": "7bc7acb1f5e30082678572a752954cfe05c3a6ba442c7679ed4bd541a7ae143a",
+      ".ai/features/stock-start/00_spec.result.json": "9ef15f061eccde55b7f756a02a6e965e4e9457394a5f7bd335c20e6cdfb66e92",
+      ".ai/features/stock-start/01_plan.md": "515f0eabffc7f16878d429018dae302a188309353644b9a01e90cefc0e361a70",
+      ".ai/features/stock-start/01_plan.result.json": "dce71cf120b585c39d731c6c33b8bd0d60cbce6807cb7effd0626c83e0d5dfbf",
+      ".ai/features/stock-start/02_dev.md": "465aa373dd1ddddea0fbdc6c3238e8f910722000ef0aa60fc6c28f860f8ae94d",
+      ".ai/features/stock-start/02_dev.result.json": "581074c73fcb813d8537009ecfb2be2f48b397ede5b2fd33e35cbd38ff7b1b9e",
+      ".ai/features/stock-start/03_review.md": "dbe79fc04d77188d6e5e9e077ff3e778966b247b32a6aae05e78bb197d9780ce",
+      ".ai/features/stock-start/03_review.result.json": "d1eb5feb615c47bad4eda7ddabaf5286c47125d467f3d58819509926c8bc62a4",
+      ".ai/features/stock-start/04_fix.md": "53e76d2e92221a2fc8afbea8e56495c60c40efb213f5e456d6c44dc895bb7ed3",
+      ".ai/features/stock-start/04_fix.result.json": "104860b8f54018f4ae51ca37df78ab452c07889fa9b209bcbb92a4b1f218a1ae",
+      ".ai/features/stock-start/05_verify.md": "113500cf3d7667cb2093635e1c1ab1c203cd3f2ca0ab70b429829544b24d0330",
+      ".ai/features/stock-start/05_verify.result.json": "6500a74c8f9fbb41abb38c0cc4517465098ed768b3f51750ddd9388a93a2c4a2",
+      "presets/fast/00_specify.md": "0554c2cece2a3b96f8162b28fd202d79a0062d145c18dfcccf185d7574d4aac7",
+      "presets/fast/01_develop.md": "886619978f47555edee11050849e803138312f2681abce43c918cf2bd0d279ad",
+      "presets/fast/02_verify.md": "7943198d37d8f7208f4ae08ed712536bb9aaf2daa8394e77787f31038de6e0be",
+      "presets/full/00_specify.md": "3936c49d394ab9caa9778ed902793fa7eaf44ad4f00c1b4f7b72d8eabd582ea6",
+      "presets/full/01_plan.md": "c81712098d0ae66e7b2cb4956574eb67571e9565c228d798b9928a0b295461ec",
+      "presets/full/02_develop.md": "ecaa5755c84560983e884831610c7d2bae4c2dba61e104c196112a539d2b101c",
+      "presets/full/03_review.md": "b44545a8eb2322284f939fab3bc666b0bfe603c80a454cd0b2a45e57392c2f91",
+      "presets/full/04_fix.md": "c4b36444aa992fbab9c6d3e8f95010f88c2bb753fbbea75932dd471a5fd8dc56",
+      "presets/full/05_verify.md": "573d64f8bed4731c9aafba7bfe06afe55be2271d27814a55a26ab2233d64e66c",
+      "presets/full/06_document.md": "b9cebdd85b3e5da91e4182ea978fd228286707f0edf79ae7e58ec5f7693a50e3",
+      "presets/standard/00_specify.md": "fe37dee8bbfcaaa4cd8d2bdb8208d64546cd21904611841d3ec14d9b22dc08a7",
+      "presets/standard/01_develop.md": "fcb46b64df961bb4997dd073d48933d890bcb2368e9b3a7c2ba708e86a3965ef",
+      "presets/standard/02_review.md": "9185d0dfaf7cca322125a107c7de13c9a5ff432cfdc69d973b84c350f04daed3",
+      "presets/standard/03_fix.md": "a4c57fcc22940a1ec38fef56212c8552ee8ef1263621e3d3458ab7bbe8cd070f",
+      "presets/standard/04_verify.md": "e6d7e1be9ca5a9d65b66d1c8758be4d51546467afc44c1480b5e24da59503912",
+      "src/source_code_root": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "src/StockApp/App.xaml": "851ee513a1331fd0cde92aa3bcd6391ac21c8f77509ce49ab65a466b03d29508",
+      "src/StockApp/App.xaml.cs": "6153e2ffc1147e1d5dd72d1bec945c1f9471a38d96d23900eec9d857f056c0fe",
+      "src/StockApp/StockApp.csproj": "d8c0f4b0acaca1ced00f5943a726cce6a189cb1aee08651cba52200ce587eae5",
+      "src/StockApp/Models/FinanceItem.cs": "497dd539cd424d6a4c7286ff4ee92aaf0835b0de75d1edd66e595fbc007dba26",
+      "src/StockApp/Services/IFinanceService.cs": "a7f60b08682adbc6f6221ab4ff171e5a973893738fd80b05fa2cea924c4fd906",
+      "src/StockApp/Services/NaverFinanceService.cs": "7e87b2b03c432a75314bfac49b04e6c18fbc50bdd75a615f06ac16f923f66e83",
+      "src/StockApp/ViewModels/MainWindowViewModel.cs": "0867e6ccd80cd7d7383969efd8d4ee1c03d8e5b66b860cbbe0a19f6d5032bf8f",
+      "src/StockApp/Views/MainWindow.xaml": "f3ecdc0672c5593da53019bdcf27a9205e055137f990af6b398f7ba5819c2b4f",
+      "src/StockApp/Views/MainWindow.xaml.cs": "16a28d22767405d087d5afef1af6407ecc5d1e13159a206cc58893d1014c0e1c",
+      "tests/StockApp.Tests/MainWindowViewModelTests.cs": "56abd4e144910f47533df04c6a0af09a6b0f671e1c44dee4615d430bd7bb2d1a",
+      "tests/StockApp.Tests/NaverFinanceServiceTests.cs": "b0aee438d7bd714a13699d93ea9e6a4346e6a953bc9b460cff503bf577efa09a",
+      "tests/StockApp.Tests/StockApp.Tests.csproj": "ff930d9198688085d61b21c89185af3678cf176fe06fbb5ea19b58de5c1c781b"
+    }
+  },
+  "current_prompt": ".ai/runs/stock-start/prompts/06_document_attempt1.md",
+  "last_handoff": ".ai/runs/stock-start/handoff.md",
+  "last_harness_verification": ".ai/runs/stock-start/verification/latest.json",
+  "pc_candidate_extraction": {
+    "status": "PASS",
+    "provider": "codex",
+    "raw_candidate_count": 3,
+    "candidate_count": 3,
+    "filtered_out_count": 0,
+    "recorded_count": 3,
+    "candidate_ids": [
+      "pc-eef0153ec905",
+      "pc-e326e2130e4a",
+      "pc-bf380c89593a"
+    ],
+    "candidates_path": ".ai/history/pc_candidates.json",
+    "stdout": ".ai/runs/stock-start/logs/pc_candidates_codex_20260528-120613.out.txt",
+    "stderr": ".ai/runs/stock-start/logs/pc_candidates_codex_20260528-120613.err.txt",
+    "meta": ".ai/runs/stock-start/logs/pc_candidates_codex_20260528-120613.json"
+  }
+}

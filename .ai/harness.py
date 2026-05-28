@@ -1082,7 +1082,15 @@ def write_json_file(path: Path, value: Any) -> None:
     text = json.dumps(value, ensure_ascii=False, indent=4) + "\n"
     tmp = path.with_name(path.name + ".tmp")
     tmp.write_text(text, encoding="utf-8")
-    tmp.replace(path)
+    try:
+        tmp.replace(path)
+    except OSError:
+        try:
+            path.write_text(text, encoding="utf-8")
+            if tmp.exists():
+                tmp.unlink()
+        except Exception:
+            raise
 
 
 def read_json_file(path: Path, default: Any) -> Any:
@@ -2416,7 +2424,7 @@ def normalize_pc_candidate(raw: dict[str, Any], state: dict[str, Any], created_a
         "created_at": created_at,
         "decided_at": "",
         "decision_reason": "",
-        "extraction_model": "claude",
+        "extraction_model": "codex",
     }
 
 
@@ -2458,7 +2466,7 @@ def extract_project_contract_candidates(state: dict[str, Any]) -> dict[str, Any]
         stage=PC_REVIEW_STAGE,
     )
     result = run_text_provider_prompt(
-        "claude",
+        "codex",
         prompt,
         logs_dir=run_dir(feature) / "logs",
         log_prefix="pc_candidates",
@@ -2494,7 +2502,7 @@ def extract_project_contract_candidates(state: dict[str, Any]) -> dict[str, Any]
     append_result = append_pc_candidates(normalized, state)
     extraction = {
         "status": "PASS",
-        "provider": "claude",
+        "provider": "codex",
         "raw_candidate_count": len(raw_candidates),
         "candidate_count": len(normalized),
         "filtered_out_count": len(raw_candidates) - len(normalized),

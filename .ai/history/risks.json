@@ -1,0 +1,260 @@
+{
+    "schema_version": 1,
+    "risks": [
+        {
+            "risk_id": "risk-20182da54492",
+            "제목": "무료 공개 시세 데이터 소스는 응답 형식 변경, 지연, 요청 제한 리스크가 있다.",
+            "설명": "무료 공개 시세 데이터 소스는 응답 형식 변경, 지연, 요청 제한 리스크가 있다.",
+            "title": "무료 공개 시세 데이터 소스는 응답 형식 변경, 지연, 요청 제한 리스크가 있다.",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "00_specify",
+            "source_artifacts": [
+                ".ai/features/stock-start/00_spec.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-299e1139b49e",
+            "제목": "단기 주기적 폴링에 따른 속도 제한 리스크가 있으며 이를 위해 5초 제한 간격과 지수 백오프 재시도 전략을 도입한다.",
+            "설명": "단기 주기적 폴링에 따른 속도 제한 리스크가 있으며 이를 위해 5초 제한 간격과 지수 백오프 재시도 전략을 도입한다.",
+            "title": "단기 주기적 폴링에 따른 속도 제한 리스크가 있으며 이를 위해 5초 제한 간격과 지수 백오프 재시도 전략을 도입한다.",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "01_plan",
+            "source_artifacts": [
+                ".ai/features/stock-start/01_plan.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-2fd399a5c170",
+            "제목": "네이버 모바일 비공식 API의 구조적 차단(403 Forbidden) 리스크가 있으나 User-Agent와 Referer 헤더 지정으로 대처한다.",
+            "설명": "네이버 모바일 비공식 API의 구조적 차단(403 Forbidden) 리스크가 있으나 User-Agent와 Referer 헤더 지정으로 대처한다.",
+            "title": "네이버 모바일 비공식 API의 구조적 차단(403 Forbidden) 리스크가 있으나 User-Agent와 Referer 헤더 지정으로 대처한다.",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "01_plan",
+            "source_artifacts": [
+                ".ai/features/stock-start/01_plan.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-350614b1f851",
+            "제목": "WPF UI 렌더링과 실제 5초 주기 갱신은 자동 UI 테스트로 검증하지 않았음",
+            "설명": "WPF UI 렌더링과 실제 5초 주기 갱신은 자동 UI 테스트로 검증하지 않았음",
+            "title": "WPF UI 렌더링과 실제 5초 주기 갱신은 자동 UI 테스트로 검증하지 않았음",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "05_verify",
+            "source_artifacts": [
+                ".ai/features/stock-start/05_verify.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-41357a4ba02f",
+            "제목": "실제 네트워크/UI/타이머는 단위 테스트 범위 밖이며 수동 E2E 필요",
+            "설명": "실제 네트워크/UI/타이머는 단위 테스트 범위 밖이며 수동 E2E 필요",
+            "title": "실제 네트워크/UI/타이머는 단위 테스트 범위 밖이며 수동 E2E 필요",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "02_develop",
+            "source_artifacts": [
+                ".ai/features/stock-start/02_dev.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-424463e6749a",
+            "제목": "실제 네이버 비공개 API 응답 스키마 변경이나 차단은 단위 테스트만으로 완전히 검증할 수 없음",
+            "설명": "실제 네이버 비공개 API 응답 스키마 변경이나 차단은 단위 테스트만으로 완전히 검증할 수 없음",
+            "title": "실제 네이버 비공개 API 응답 스키마 변경이나 차단은 단위 테스트만으로 완전히 검증할 수 없음",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "05_verify",
+            "source_artifacts": [
+                ".ai/features/stock-start/05_verify.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-4d90c9e5f7bd",
+            "제목": "백오프/재시도 정책이 단순(5초 주기 자연 재시도)에 한정",
+            "설명": "백오프/재시도 정책이 단순(5초 주기 자연 재시도)에 한정",
+            "title": "백오프/재시도 정책이 단순(5초 주기 자연 재시도)에 한정",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "02_develop",
+            "source_artifacts": [
+                ".ai/features/stock-start/02_dev.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-57146aa1ba3d",
+            "제목": "네이버 비공식 모바일 API 스키마 변경 시 파서 실패 가능 (응답 변경 모니터링 부재)",
+            "설명": "네이버 비공식 모바일 API 스키마 변경 시 파서 실패 가능 (응답 변경 모니터링 부재)",
+            "title": "네이버 비공식 모바일 API 스키마 변경 시 파서 실패 가능 (응답 변경 모니터링 부재)",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "02_develop",
+            "source_artifacts": [
+                ".ai/features/stock-start/02_dev.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-6871828fb516",
+            "제목": "API 키 없는 기본 구현은 틱 단위 스트리밍 실시간을 보장하지 못한다.",
+            "설명": "API 키 없는 기본 구현은 틱 단위 스트리밍 실시간을 보장하지 못한다.",
+            "title": "API 키 없는 기본 구현은 틱 단위 스트리밍 실시간을 보장하지 못한다.",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "00_specify",
+            "source_artifacts": [
+                ".ai/features/stock-start/00_spec.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-72de9af41f6e",
+            "제목": "ViewModel 내부 비동기 대기 구문에 .ConfigureAwait(false)를 다중 적용하여 비동기 완료 후 WPF UI 스레드 컨텍스트를 유실하고 렌더링 또는 Command 갱신 오류를 유발할 수 있는 멀티스레딩 리스크 (MAJOR)",
+            "설명": "ViewModel 내부 비동기 대기 구문에 .ConfigureAwait(false)를 다중 적용하여 비동기 완료 후 WPF UI 스레드 컨텍스트를 유실하고 렌더링 또는 Command 갱신 오류를 유발할 수 있는 멀티스레딩 리스크 (MAJOR)",
+            "title": "ViewModel 내부 비동기 대기 구문에 .ConfigureAwait(false)를 다중 적용하여 비동기 완료 후 WPF UI 스레드 컨텍스트를 유실하고 렌더링 또는 Command 갱신 오류를 유발할 수 있는 멀티스레딩 리스크 (MAJOR)",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "03_review",
+            "source_artifacts": [
+                ".ai/features/stock-start/03_review.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-89f750099d1b",
+            "제목": "국내 금시세(CMDT_GD) 대신 국제 금시세(CMDT_GC)가 오적용되어 원화/g당 시세 스펙을 위반하고 온스당 달러가 표출되는 심각한 스펙 오차 리스크 (BLOCKER)",
+            "설명": "국내 금시세(CMDT_GD) 대신 국제 금시세(CMDT_GC)가 오적용되어 원화/g당 시세 스펙을 위반하고 온스당 달러가 표출되는 심각한 스펙 오차 리스크 (BLOCKER)",
+            "title": "국내 금시세(CMDT_GD) 대신 국제 금시세(CMDT_GC)가 오적용되어 원화/g당 시세 스펙을 위반하고 온스당 달러가 표출되는 심각한 스펙 오차 리스크 (BLOCKER)",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "03_review",
+            "source_artifacts": [
+                ".ai/features/stock-start/03_review.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-8e10827735e6",
+            "제목": "Prism 및 시세 파싱 관련 새 NuGet 의존성이 필요할 수 있다.",
+            "설명": "Prism 및 시세 파싱 관련 새 NuGet 의존성이 필요할 수 있다.",
+            "title": "Prism 및 시세 파싱 관련 새 NuGet 의존성이 필요할 수 있다.",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "00_specify",
+            "source_artifacts": [
+                ".ai/features/stock-start/00_spec.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-9491cf109ca8",
+            "제목": "갱신 간격/종목/통화 하드코딩 — 외부 설정화 필요",
+            "설명": "갱신 간격/종목/통화 하드코딩 — 외부 설정화 필요",
+            "title": "갱신 간격/종목/통화 하드코딩 — 외부 설정화 필요",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "02_develop",
+            "source_artifacts": [
+                ".ai/features/stock-start/02_dev.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-98547fbd83c9",
+            "제목": "5초 폴링 방식에 따라 네트워크 트래픽 빈도가 높고 자동 차단 우려가 상존함",
+            "설명": "5초 폴링 방식에 따라 네트워크 트래픽 빈도가 높고 자동 차단 우려가 상존함",
+            "title": "5초 폴링 방식에 따라 네트워크 트래픽 빈도가 높고 자동 차단 우려가 상존함",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "06_document",
+            "source_artifacts": [
+                ".ai/features/stock-start/06_document.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        },
+        {
+            "risk_id": "risk-b40758ca719c",
+            "제목": "네이버 모바일 API의 비공식 사용에 따른 네이버 응답 JSON 스키마 변경 시의 유지보수 리스크 존재",
+            "설명": "네이버 모바일 API의 비공식 사용에 따른 네이버 응답 JSON 스키마 변경 시의 유지보수 리스크 존재",
+            "title": "네이버 모바일 API의 비공식 사용에 따른 네이버 응답 JSON 스키마 변경 시의 유지보수 리스크 존재",
+            "category": "risk",
+            "severity": "medium",
+            "status": "open",
+            "introduced_by": "stock-start",
+            "last_seen_by": "20260528111214-stock-start-full",
+            "source_stage": "06_document",
+            "source_artifacts": [
+                ".ai/features/stock-start/06_document.md"
+            ],
+            "created_at": "2026-05-28T12:06:39",
+            "updated_at": "2026-05-28T12:07:42"
+        }
+    ]
+}
