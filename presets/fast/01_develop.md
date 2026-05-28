@@ -1,7 +1,7 @@
 ---
 stage: "01_develop"
 role: "fast_implementation"
-preferred_model: "Claude"
+preferred_model: "Antigravity"
 model_policy: "preferred_not_hard_block"
 required_inputs:
   - ".ai/features/[기능명]/00_spec.md"

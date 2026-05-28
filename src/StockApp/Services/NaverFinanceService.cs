@@ -10,9 +10,9 @@ namespace StockApp.Services;
 
 public class NaverFinanceService : IFinanceService
 {
-    private const string StockApiTemplate = "https://api.stock.naver.com/stock/{0}/basic";
-    private const string IndexApiTemplate = "https://api.stock.naver.com/index/{0}/basic";
-    private const string MarketIndicatorTemplate = "https://api.stock.naver.com/marketindicator/{0}/basic";
+    private const string StockApiTemplate = "https://m.stock.naver.com/api/stock/{0}/basic";
+    private const string IndexApiTemplate = "https://m.stock.naver.com/api/index/{0}/basic";
+    private const string MarketIndicatorApiTemplate = "https://m.stock.naver.com/front-api/marketIndex/productDetail?category={0}&reutersCode={1}";
 
     private readonly HttpClient _httpClient;
 
@@ -37,7 +37,7 @@ public class NaverFinanceService : IFinanceService
 
     public async Task<FinanceQuote> GetExchangeRateAsync(string pairCode, CancellationToken cancellationToken = default)
     {
-        var url = string.Format(CultureInfo.InvariantCulture, MarketIndicatorTemplate, pairCode);
+        var url = string.Format(CultureInfo.InvariantCulture, MarketIndicatorApiTemplate, "exchange", pairCode);
         var json = await GetStringAsync(url, cancellationToken).ConfigureAwait(false);
         return ParseMarketIndicatorResponse(json, pairCode);
     }
@@ -45,7 +45,7 @@ public class NaverFinanceService : IFinanceService
     public async Task<FinanceQuote> GetGoldPriceAsync(CancellationToken cancellationToken = default)
     {
         const string goldCode = "CMDT_GD";
-        var url = string.Format(CultureInfo.InvariantCulture, MarketIndicatorTemplate, goldCode);
+        var url = string.Format(CultureInfo.InvariantCulture, MarketIndicatorApiTemplate, "metals", goldCode);
         var json = await GetStringAsync(url, cancellationToken).ConfigureAwait(false);
         return ParseMarketIndicatorResponse(json, goldCode);
     }
@@ -86,8 +86,16 @@ public class NaverFinanceService : IFinanceService
     {
         using var doc = JsonDocument.Parse(json);
         var root = doc.RootElement;
+        if (root.TryGetProperty("result", out var result) && result.ValueKind == JsonValueKind.Object)
+        {
+            root = result;
+        }
 
         var value = ReadDecimal(root, "closePrice");
+        if (value == 0m)
+        {
+            value = ReadDecimal(root, "calcPrice");
+        }
         if (value == 0m)
         {
             value = ReadDecimal(root, "closeValue");
